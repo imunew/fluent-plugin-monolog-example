@@ -1,0 +1,6 @@
+{
+    "require": {
+        "monolog/monolog": "1.*",
+        "dakatsuka/monolog-fluent-handler": "^1.2"
+    }
+}
