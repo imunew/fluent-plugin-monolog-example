@@ -27,6 +27,11 @@ RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 RUN yum install -y --enablerepo=remi-php56,remi \
     php php-devel php-common
 
+# Install composer
+RUN cd /tmp &&\
+    curl -sS https://getcomposer.org/installer | php &&\
+    mv ./composer.phar /usr/local/bin/composer
+
 RUN mkdir -p /data
 WORKDIR /data
 
