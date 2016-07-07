@@ -51,4 +51,7 @@ ENV LANG ja_JP.UTF-8
 ENV LC_ALL ja_JP.UTF-8
 ENV LC_CTYPE ja_JP.UTF-8
 
+# Adding monolog parser
+COPY ./fluentd/plugin/parser_monolog.rb /etc/td-agent/plugin/parser_monolog.rb
+
 ENTRYPOINT service td-agent start && /bin/bash
