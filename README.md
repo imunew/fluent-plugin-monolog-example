@@ -1,4 +1,5 @@
-# monolog-fluentd-example
+# fluent-plugin-monolog-example
+This is the example for [fluent-plugin-monolog](https://rubygems.org/gems/fluent-plugin-monolog).
 
 ## Setup docker
 
