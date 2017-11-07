@@ -1,10 +1,4 @@
-FROM centos:6.6
-
-# Setting timezone
-RUN yum -y groupinstall "Japanese Support"
-RUN rm -f /etc/localtime &&\
-    ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-COPY ./config/sysconfig/clock /etc/sysconfig/clock
+FROM centos:7
 
 # Install EPEL Repository
 RUN yum -y install epel-release
@@ -24,10 +18,10 @@ RUN td-agent-gem install fluent-plugin-parser
 RUN td-agent-gem install fluent-plugin-monolog
 
 # Install Remi Repository
-RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 
 # Install PHP
-RUN yum install -y --enablerepo=remi-php56,remi \
+RUN yum install -y --enablerepo=remi-php70,remi \
     php php-devel php-common
 
 # Install composer
@@ -47,11 +41,4 @@ RUN mkdir -p /var/db/td-agent
 RUN sqlite3 /var/db/td-agent/example.sqlite3 < /tmp/create_tables.sql
 RUN chown -R td-agent:td-agent /var/db/td-agent
 
-# Setting environment variables
-ENV TZ Asia/Tokyo
-ENV LANGUAGE ja_JP.UTF-8
-ENV LANG ja_JP.UTF-8
-ENV LC_ALL ja_JP.UTF-8
-ENV LC_CTYPE ja_JP.UTF-8
-
-ENTRYPOINT service td-agent start && /bin/bash
+ENTRYPOINT /etc/init.d/td-agent start && /bin/bash
