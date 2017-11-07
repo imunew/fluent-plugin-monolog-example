@@ -2,37 +2,12 @@
 This is the example for [fluent-plugin-monolog](https://rubygems.org/gems/fluent-plugin-monolog).
 
 ## Setup docker
+### For Mac
+Download and install [Docker Community Edition for Mac](https://store.docker.com/editions/community/docker-ce-desktop-mac).
 
-### VirtualBox
-Download installer and install.<br>
-https://www.virtualbox.org/wiki/Downloads
-
-### Docker toolbox
-Download installer and install.<br>
-https://www.docker.com/products/docker-toolbox
-
-The following components are installed.
-- Docker Engine
-- Compose
-- Machine
-- Kitematic
+> When the installation completes and Docker starts, the whale in the top status bar shows that Docker is running, and accessible from a terminal.
 
 ## How to use
-### Starting docker-machine
-```
-$ docker-machine start default
-```
-### Setting environment variables
-```
-$ docker-machine env default
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="/path/to/home/.docker/machine/machines/default"
-export DOCKER_MACHINE_NAME="default"
-# Run this command to configure your shell:
-# eval $(docker-machine env default)
-```
-
 ### Building docker
 ```
 $ docker build -t monolog-fluentd-example .
