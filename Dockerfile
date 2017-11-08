@@ -4,8 +4,8 @@ FROM centos:7
 RUN yum -y install epel-release
 
 # Install td-agent
-RUN yum install -y sudo gcc rubygems
-RUN curl -L http://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.sh | sh
+RUN yum install -y sudo gcc rubygems git
+RUN curl -L http://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
 
 # Install fluent-plugin-sqlite3
 RUN yum install -y sqlite-devel
